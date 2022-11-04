@@ -1,20 +1,25 @@
-SRC = 	ft_print_common.c \
-		ft_printf\
-
-OBJECT = $(SRC:.c=.o)
-
 NAME = libftprintf.a
 
-all : $(NAME)
+SRCS =	ft_printf.c ft_print.c
 
-$(NAME) : $(OBJECT)
-	@gcc -Wall -Werror -Wextra -c $(SRC)
-	@ar rc $(NAME) $(OBJECT)
+CC = gcc
 
-clean : 
-	@rm -rf $(OBJECT)
+OBJS = $(SRCS:.c=.o)
 
-fclean : clean
-	@rm -rf $(NAME)
+CFLAGS = -Wall -Werror -Wextra
 
-re : fclean all
+$(NAME): ft_printf.h
+	$(CC) $(CFLAGS) -c $(SRCS)
+	ar rc $(NAME) $(OBJS)
+
+all: $(NAME)
+
+clean:
+	rm -rf $(OBJS)
+
+fclean: clean
+	rm -rf $(NAME)
+
+re: fclean all
+
+.PHONY: clean fclean re all
