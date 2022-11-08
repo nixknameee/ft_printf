@@ -20,16 +20,16 @@ int	print_c(char c)
 
 int	print_n(int n)
 {
-	int	temp;
+	int	ret;
 
-	temp = 0;
+	ret = 0;
 	if (n < 0)
 	{
 		temp++;
 		write(1, "-", 1);
 		n *= -1;
 	}
-	return (print_n2(n) + temp);
+	return (print_n2(n) + ret);
 }
 
 int	print_n2(unsigned int n)
@@ -97,6 +97,8 @@ int	ft_printf(const char *format, ...)
 	va_end(va);
 	return (ret);
 }
+
+
 // // int main(void)
 // // {
 // // 	#include <limits.h>
